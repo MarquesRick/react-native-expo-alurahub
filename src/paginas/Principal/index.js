@@ -9,18 +9,16 @@ import {
   ScrollView,
 } from 'react-native';
 import estilos from './estilos';
-import api from '../../servicos/api';
+import { buscaUsuario } from '../../servicos/requisicoes/usuarios';
+
 
 export default function Principal({ navigation }) {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [usuario, setUsuario] = useState({});
 
-  const busca = () => {
-    api.get('/repos').then(response => {
-      console.log(response.data);
-    }).catch(error => {
-        console.log(error);
-    })
+  const busca = async () => {
+    const resultado = await buscaUsuario();
+    console.log(resultado); 
   };
 
   return (
