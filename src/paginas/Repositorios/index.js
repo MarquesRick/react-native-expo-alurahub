@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import estilos from './estilos';
 import { pegarRepositorioPeloId } from '../../servicos/requisicoes/repositorios';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Repositorios({ route, navigation }) {
   const [repo, setRepo] = useState([]);
+  //utilizado para recarregar os repositorios caso for atualizado na tela de infoRepositorios
+  const estaNaTela = useIsFocused();
 
   useEffect(async () => {
     const resultado = await pegarRepositorioPeloId(route.params.id);
     setRepo(resultado);
-  }, []);
+  }, [estaNaTela]);
 
   return (
     <View style={estilos.container}>

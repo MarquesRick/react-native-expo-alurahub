@@ -9,3 +9,18 @@ export async function pegarRepositorioPeloId(id){
         return [];
     }
 }
+
+export async function salvarRepositorio(postId, name, data, id){
+    try{
+        await api.put(`/repos/${id}`, {
+            name: name,
+            data: data,
+            postId: postId, 
+            id: id
+        });
+        return 'success'
+    }catch(error){
+        console.log(error);
+        return 'error';
+    }
+}
