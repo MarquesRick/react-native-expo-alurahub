@@ -5,6 +5,8 @@ import { pegarRepositorioPeloId } from '../../servicos/requisicoes/repositorios'
 import { useIsFocused } from '@react-navigation/native';
 
 export default function Repositorios({ route, navigation }) {
+
+  const [nomeRepo, setNomeRepo] = useState('');
   const [repo, setRepo] = useState([]);
   //utilizado para recarregar os repositorios caso for atualizado na tela de infoRepositorios
   const estaNaTela = useIsFocused();
