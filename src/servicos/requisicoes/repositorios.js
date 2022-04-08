@@ -34,3 +34,17 @@ export async function PegarRepositoriosDoUsuarioPeloNome(id, nome){
     })
     return resultado;
 }
+
+export async function criarRepositorioDoUsuario(postId, name, data){
+    try{
+        await api.post(`/repos`, {
+            name: name,
+            data: data,
+            postId: postId
+        });
+        return 'success'
+    }catch(error){
+        console.log(error);
+        return 'error';
+    }
+}
